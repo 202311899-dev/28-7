@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks - Todo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>My Dashboard</h1>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </header>
+    <main class="container">
+        <section class="add-todo">
+            <h2>Add New Task</h2>
+            <form action="/todos" method="POST">
+                <input type="text" name="title" placeholder="What needs to be done?" required>
+                <textarea name="description" placeholder="Optional details..."></textarea>
+                <button type="submit">Add Task</button>
+            </form>
+        </section>
+        
+        <section class="todo-list">
+            <h2>Your Todos</h2>
+            <ul>
+                <!-- Loop rendered dynamically in Flask -->
+                <li class="todo-item">
+                    <span>Example Task</span>
+                    <a href="/todos/1" class="details-link">View Details & Subtasks</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

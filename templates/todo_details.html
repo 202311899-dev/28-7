@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details - Todo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <a href="/todos">&larr; Back to Tasks</a>
+        <article class="todo-detail">
+            <h2>Project Overview</h2>
+            <p>Description of the top-level task goes here.</p>
+            
+            <section class="subtasks-section">
+                <h3>Subtasks</h3>
+                <form action="/todos/1/subtasks" method="POST">
+                    <input type="text" name="title" placeholder="Add a subtask..." required>
+                    <button type="submit">Add Subtask</button>
+                </form>
+                <ul class="subtask-list">
+                    <li>
+                        <input type="checkbox" id="sub1">
+                        <label for="sub1">Draft documentation</label>
+                    </li>
+                </ul>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
