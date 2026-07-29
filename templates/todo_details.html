@@ -4,29 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Details - Todo App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="/static/style.css?v=2.0">
 </head>
 <body>
-    <main class="container">
-        <a href="/todos">&larr; Back to Tasks</a>
-        <article class="todo-detail">
-            <h2>Project Overview</h2>
-            <p>Description of the top-level task goes here.</p>
-            
-            <section class="subtasks-section">
-                <h3>Subtasks</h3>
-                <form action="/todos/1/subtasks" method="POST">
-                    <input type="text" name="title" placeholder="Add a subtask..." required>
-                    <button type="submit">Add Subtask</button>
-                </form>
-                <ul class="subtask-list">
-                    <li>
-                        <input type="checkbox" id="sub1">
-                        <label for="sub1">Draft documentation</label>
-                    </li>
-                </ul>
-            </section>
-        </article>
-    </main>
+    <div class="container">
+        <a href="/todos" class="back-link">&larr; Back to Tasks</a>
+
+        <!-- Dynamic Error Container -->
+        <div id="error-container"></div>
+
+        <!-- Parent Task Header Card -->
+        <div class="parent-card">
+            <h2 id="task-title" style="font-size: 1.2rem; margin-bottom: 5px;">Loading task...</h2>
+            <p id="task-description" style="color: #64748b; font-size: 0.9rem;"></p>
+        </div>
+
+        <!-- Add Subtask Form -->
+        <form id="subtask-form" style="margin-bottom: 25px;">
+            <div class="form-group">
+                <label for="subtask-title">Add Subtask</label>
+                <input type="text" id="subtask-title" name="title" class="form-control" placeholder="Subtask step..." required>
+            </div>
+            <button type="submit" class="btn">Add Subtask</button>
+        </form>
+
+        <!-- Subtasks List -->
+        <h3>Subtasks</h3>
+        <ul id="subtask-list" class="todo-list">
+            <!-- Dynamically populated by JS -->
+        </ul>
+    </div>
+
+    <!-- Include JavaScript file -->
+    <script src="/static/todo_details.js"></script>
 </body>
 </html>

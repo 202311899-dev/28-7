@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Todo App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="stylesheet" href="/static/style.css?v=2.0">
 </head>
 <body>
-    <main class="auth-container">
-        <h2>Create Account</h2>
-        <form action="/auth/register" method="POST">
+    <div class="container">
+        <div class="header">
+            <h1>Create Account</h1>
+        </div>
+
+        <!-- Dynamic error/message container -->
+        <div id="error-container"></div>
+
+        <form id="register-form">
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
             </div>
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
             </div>
-            <button type="submit">Sign Up</button>
+            <button type="submit" class="btn">Sign Up</button>
         </form>
-        <p>Already registered? <a href="/login">Login here</a></p>
-    </main>
+
+        <div class="auth-footer">
+            Already have an account? <a href="/login">Log in</a>
+        </div>
+    </div>
+
+    <!-- Include registration script -->
+    <script src="/static/register.js"></script>
 </body>
 </html>

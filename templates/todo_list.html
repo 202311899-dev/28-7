@@ -4,33 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Tasks - Todo App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="/static/style.css?v=2.0">
 </head>
 <body>
-    <header>
-        <h1>My Dashboard</h1>
-        <a href="/logout" class="logout-btn">Logout</a>
-    </header>
-    <main class="container">
-        <section class="add-todo">
-            <h2>Add New Task</h2>
-            <form action="/todos" method="POST">
-                <input type="text" name="title" placeholder="What needs to be done?" required>
-                <textarea name="description" placeholder="Optional details..."></textarea>
-                <button type="submit">Add Task</button>
-            </form>
-        </section>
-        
-        <section class="todo-list">
-            <h2>Your Todos</h2>
-            <ul>
-                <!-- Loop rendered dynamically in Flask -->
-                <li class="todo-item">
-                    <span>Example Task</span>
-                    <a href="/todos/1" class="details-link">View Details & Subtasks</a>
-                </li>
-            </ul>
-        </section>
-    </main>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>Task Dashboard</h1>
+                <p>Welcome, <span id="user-name">User</span>!</p>
+            </div>
+            <a href="/logout" id="logout-btn" class="btn-logout">Logout</a>
+        </div>
+
+        <!-- Dynamic Error Container -->
+        <div id="error-container"></div>
+
+        <!-- Form to Add Todo -->
+        <form id="todo-form" style="margin-bottom: 25px;">
+            <div class="form-group">
+                <label for="title">New Task</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="What needs to be done?" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description (Optional)</label>
+                <textarea id="description" name="description" class="form-control" placeholder="Add additional details..."></textarea>
+            </div>
+            <button type="submit" class="btn">Add Task</button>
+        </form>
+
+        <!-- Todo List -->
+        <h2>Your Tasks</h2>
+        <ul id="todo-list" class="todo-list">
+            <!-- Dynamically populated by JS -->
+        </ul>
+    </div>
+
+    <!-- Include JavaScript file -->
+    <script src="/static/todo_list.js"></script>
 </body>
 </html>
